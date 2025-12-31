@@ -137,12 +137,12 @@ The controller manages:
 * **Vehicle requests from YOLO** (latched, adaptive side-green extension)
 * **Safety phases** (yellow + all-red intervals)
 
-![State diagram](/assets/img/Gemini_Generated_Image_eoqri3eoqri3eoqr.png)
+![State diagram](/assets/stateMachineDiagram.png)
 
 ### Code — Main Controller (excerpt)
 
 ```python
-# pin assignments (BOARD numbers)
+# pin assignments
 PIN_MAIN_R = 15
 PIN_MAIN_Y = 16
 PIN_MAIN_G = 13
