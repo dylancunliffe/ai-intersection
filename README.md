@@ -1,14 +1,6 @@
----
-layout: post
-title: Edge AI Intersection Control System
-subtitle: A real-time, vision-enhanced traffic controller built on the Jetson Orin Nano
-thumbnail-img: assets/img/jetson-orin-nano-super-developer-kit-workloads-fg-i3of3-d.jpg
-tags: [AI, Machine Learning, Embedded Programming]
-author: Dylan Cunliffe
----
 
 <video width="100%" height="auto" controls autoplay loop muted>
-  <source src="{{ 'assets/img/intersectiondemovideo.mp4' | relative_url }}" type="video/mp4">
+  <source src="{{ 'assets/intersectionDemoVideo.mp4' | relative_url }}" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -37,8 +29,8 @@ NVIDIA’s Jetson Orin Nano is a compact, power-efficient edge AI computer. It�
 
 ## Project Setup
 
-![Setup](/assets/img/WIN_20251230_22_45_14_Pro.jpg)
-![Setup](/assets/img/WIN_20251230_22_44_47_Pro.jpg)
+![Setup](/assets/setup1.jpg)
+![Setup](/assets/setup2.jpg)
 
 ---
 
@@ -73,10 +65,10 @@ Camera → YOLOv8 Detector → Shared File → Main Intersection Controller → 
    
 ---
 
-![YOLO Detection View](/assets/img/WIN_20251230_22_51_28_Pro.jpg)
+![YOLO Detection View](/assets/yoloOutput.jpg)
 
 <video width="100%" height="auto" controls>
-  <source src="{{ 'assets/img/oaijseoijsv.mp4' | relative_url }}" type="video/mp4">
+  <source src="{{ 'assets/yoloOutputVideo.mp4' | relative_url }}" type="video/mp4">
 </video>
 
 ### Code — YOLO Detector (`yolo_detect.py`) (excerpt)
@@ -196,7 +188,7 @@ if state == "MAIN_GREEN":
 ## 5. Results & Demo
 
 <video width="100%" height="auto" controls autoplay loop muted>
-  <source src="{{ 'assets/img/intersectiondemovideo.mp4' | relative_url }}" type="video/mp4">
+  <source src="{{ 'assets/intersectionDemoVideo.mp4' | relative_url }}" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 ---
