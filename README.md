@@ -1,9 +1,4 @@
 
-<video width="100%" height="auto" controls autoplay loop muted>
-  <source src="{{ 'assets/intersectionDemoVideo.mp4' | relative_url }}" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
 ## 🚦 Overview and Motivation
 
 Modern urban intersections are chaotic environments. My project aims to demonstrate how low-cost embedded systems can contribute to **safer and more intelligent intersections**.
@@ -187,10 +182,7 @@ if state == "MAIN_GREEN":
 
 ## 5. Results & Demo
 
-<video width="100%" height="auto" controls autoplay loop muted>
-  <source src="{{ 'assets/intersectionDemoVideo.mp4' | relative_url }}" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+See my website for demo videos: https://dylancunliffe.github.io/2025-11-23-jetson-intersection/
 ---
 
 ## 6. Key Takeaways
