@@ -1,12 +1,12 @@
 import Jetson.GPIO as GPIO
 import time
 
-PIN = 37  # <-- your button pin (BOARD numbering). Update if needed.
+PIN = 37  # jetson board pin number
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(PIN, GPIO.IN)
 
-print("Press the button repeatedly. Ctrl+C to exit.\n")
+print("Press the button repeatedly\n")
 
 try:
     while True:
