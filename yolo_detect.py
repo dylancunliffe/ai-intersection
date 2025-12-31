@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 """
-yolo_detect.py
-Runs YOLOv8 object detection on webcam.
-Detects vehicles (Car, Motorcycle, Bus, Truck).
-Writes '1' to a shared file if detected, '0' otherwise.
-Uses atomic file writing to prevent read-errors in the main controller.
+Runs YOLOv8 object detection on webcam. Detects vehicles. Writes '1' to a shared file if detected, '0' otherwise.
+Uses file writing to prevent read-errors in the main controller.
 """
 
 import cv2
@@ -13,12 +10,12 @@ import os
 import tempfile
 from ultralytics import YOLO
 
-# --- CONFIGURATION ---
-MODEL_PATH = "yolov8n.onnx" # Or "yolov8n.pt" if you haven't exported yet
+# Config
+MODEL_PATH = "yolov8n.onnx"
 SHARED_FILE_PATH = "/tmp/side_detected.txt"
 CONFIDENCE_THRESHOLD = 0.45
 
-# COCO Class IDs for vehicles: 2=car, 3=motorcycle, 5=bus, 7=truck
+# Class IDs for vehicles: 2=car, 3=motorcycle, 5=bus, 7=truck
 VEHICLE_CLASSES = [2, 3, 5, 7, 46]
 
 def write_status(detected):
@@ -35,7 +32,7 @@ def write_status(detected):
         os.fsync(tmp.fileno())
         tmp_name = tmp.name
 
-    # Atomic move (overwrite)
+    # Atomic move
     os.replace(tmp_name, SHARED_FILE_PATH)
 
 def main():
@@ -47,7 +44,7 @@ def main():
         print("Ensure yolov8n.onnx or yolov8n.pt exists.")
         return
 
-    # Open Webcam (Index 0 is usually the default USB can or CSI can)
+    # Open webcam
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print("Error: Could not open webcam.")
@@ -65,7 +62,7 @@ def main():
                 print("Failed to grab frame")
                 break
 
-            # Run Inference
+            # Run inference
             results = model(frame, verbose=False, conf=CONFIDENCE_THRESHOLD)
 
             car_detected = False
@@ -81,14 +78,14 @@ def main():
             # Update the shared file
             write_status(car_detected)
 
-            # Optional: Visualize
+            # Visualize
             annotated_frame = results[0].plot()
             cv2.imshow("YOLOv8 Detection", annotated_frame)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
-            # Small sleep to save resources if not needing 30fps high speed
+            # Small sleep to save resources
             time.sleep(0.1)
 
     except KeyboardInterrupt:
